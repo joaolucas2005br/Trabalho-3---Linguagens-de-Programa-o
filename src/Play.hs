@@ -1,24 +1,26 @@
 module Play (
     PlayType(..),
-    beats
+    beats,
+    numberToPlay
 ) where
 
 data PlayType = Rock | Paper | Scissor | Water | Fire
-  deriving (Show)
+  deriving (Show,Eq)
 
 beats :: PlayType -> PlayType -> Bool
-beats Rock Scissor = True
-beats Scissor Paper = True
-beats Paper Rock = True
+beats a b = b `elem` defeats a
+  where
+    defeats Rock    = [Scissor, Water]
+    defeats Paper   = [Rock, Water]
+    defeats Scissor = [Paper, Water]
+    defeats Fire    = [Rock, Paper, Scissor]
+    defeats Water   = [Fire]
 
-beats Fire Rock = True
-beats Fire Scissor = True
-beats Fire Paper = True
-
-beats Water Fire = True
-
-beats Rock Water = True
-beats Scissor Water = True
-beats Paper Water = True
-
-beats _ _ = False
+numberToPlay :: Int -> PlayType
+numberToPlay 1 = Rock
+numberToPlay 2 = Paper
+numberToPlay 3 = Scissor
+numberToPlay 4 = Water
+numberToPlay 5 = Fire
+numberToPlay _ = error "Jogada invalida"
+ 
