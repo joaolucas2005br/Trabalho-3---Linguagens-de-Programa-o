@@ -1,16 +1,10 @@
 module Play (
     PlayType(..),
-    Play(..),
     beats
 ) where
 
 data PlayType = Rock | Paper | Scissor | Water | Fire
   deriving (Show, Eq)
-
-data Play = Play
-  { playType :: PlayType
-  }
-  deriving (Show)
 
 beats :: PlayType -> PlayType -> Bool
 beats Rock Scissor = True
