@@ -10,7 +10,7 @@ playGod Rock = return Paper
 playGod Paper = return Scissor
 playGod Scissor = return Rock
 
-playGod Fire = return Water
+playGod Fire = return Water  --agua
 
 playGod Water = do
     t <- getPOSIXTime
