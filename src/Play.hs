@@ -23,4 +23,8 @@ beats Fire Paper = True
 
 beats Water Fire = True
 
+beats Rock Water = True
+beats Scissor Water = True
+beats Paper Water = True
+
 beats _ _ = False

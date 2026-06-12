@@ -14,10 +14,4 @@ playDumb Water = return Fire
 
 playDumb Fire = do
     t <- getPOSIXTime
-    let n = floor (t * 1000) `mod` 3
-
-    return $
-        case n of
-            0 -> Rock
-            1 -> Paper
-            _ -> Scissor
+    return $ [Rock, Paper, Scissor] !! (floor (t * 1000) `mod` 3)
