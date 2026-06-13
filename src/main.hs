@@ -5,6 +5,7 @@ import GodBot
 import DumbBot
 import FairBot
 import Utils.InOut
+import Utils.Utils
 
 gameLoop :: IO ()
 gameLoop = do
@@ -15,12 +16,7 @@ gameLoop = do
 
     mbBotChoice <- readInt
 
-    case mbBotChoice of
-        Nothing -> do
-            invalidInput
-            gameLoop
-
-        Just botChoice ->
+    handleMaybeInt mbBotChoice gameLoop(\botChoice ->
             case botChoice of
                 0 -> return ()
                 1 -> startGame botChoice
@@ -29,6 +25,7 @@ gameLoop = do
                 _ -> do
                     invalidInput
                     gameLoop
+            )
                     
 startGame :: Int -> IO ()
 startGame botChoice = do
@@ -38,34 +35,26 @@ startGame botChoice = do
 
     mbPlayChoice <- readInt
 
-    case mbPlayChoice of
-        Nothing -> do
-            invalidInput
-            gameLoop
-
-        Just playChoice ->
-            if playChoice < 1 || playChoice > 5
+    handleMaybeInt mbPlayChoice gameLoop (\playChoice ->
+            if not (validPlay playChoice)
                 then do
                     invalidInput
                     gameLoop
                 else do
                     let playerPlay = numberToPlay playChoice
 
-                    botPlay <-
-                        case botChoice of
-                            1 -> playGod playerPlay
-                            2 -> playDumb playerPlay
-                            3 -> playFair playerPlay
+                    botPlay <- chooseBot botChoice playerPlay
 
                     clearScreen
-                    
+
                     printPlays playerPlay botPlay
-                    
+
                     printResult playerPlay botPlay
-                    
+
                     waitEnter
 
                     gameLoop
+        )
 
 main :: IO ()
 main = gameLoop

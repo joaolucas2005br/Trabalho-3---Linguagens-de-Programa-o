@@ -1,6 +1,7 @@
 module Utils.InOut(
     clearScreen,
     readInt,
+    handleMaybeInt,
     printMenu,
     invalidInput,
     printMoves,
@@ -19,6 +20,14 @@ readInt :: IO (Maybe Int)
 readInt = do
     input <- getLine
     return (readMaybe input)
+    
+handleMaybeInt :: Maybe Int -> IO a -> (Int -> IO a) -> IO a
+handleMaybeInt Nothing retry _ = do
+    invalidInput
+    retry
+
+handleMaybeInt (Just x) _ success =
+    success x
 
 printMenu :: IO ()
 printMenu = do
