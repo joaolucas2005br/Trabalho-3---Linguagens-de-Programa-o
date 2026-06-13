@@ -18,4 +18,3 @@ clean:
 	rm -rf $(BUILD)
 	rm -f $(TARGET)
 
-.PHONY: all run clean
