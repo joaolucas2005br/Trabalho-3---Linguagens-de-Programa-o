@@ -11,7 +11,7 @@ module Utils.InOut(
 ) where
 
 import Text.Read (readMaybe)
-import Play
+import Utils.Play
 
 clearScreen :: IO ()
 clearScreen = putStr (replicate 50 '\n')
@@ -20,7 +20,7 @@ readInt :: IO (Maybe Int)
 readInt = do
     input <- getLine
     return (readMaybe input)
-    
+
 handleMaybeInt :: Maybe Int -> IO a -> (Int -> IO a) -> IO a
 handleMaybeInt Nothing retry _ = do
     invalidInput

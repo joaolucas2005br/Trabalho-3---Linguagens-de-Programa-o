@@ -1,8 +1,8 @@
-module FairBot (
+module Bots.FairBot (
     playFair
 ) where
 
-import Play
+import Utils.Play
 import Utils.Random (getRandom)
 
 playFair :: PlayType -> IO PlayType

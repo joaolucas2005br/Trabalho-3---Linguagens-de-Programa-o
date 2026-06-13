@@ -32,18 +32,3 @@ Para remover os arquivos de compilação:
 ```bash
 make clean
 ```
-
-## Estrutura do Projeto
-
-```text
-.
-├── src/
-│   ├── Main.hs
-│   ├── Play.hs
-│   ├── GodBot.hs
-│   ├── DumbBot.hs
-│   └── FairBot.hs
-├── build/
-├── Makefile
-└── README.md
-```

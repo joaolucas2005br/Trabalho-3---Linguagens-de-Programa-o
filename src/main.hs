@@ -1,11 +1,9 @@
 module Main where
 
-import Play
-import GodBot
-import DumbBot
-import FairBot
+import Utils.Play
+import Bots.Bots
 import Utils.InOut
-import Utils.Utils
+
 
 gameLoop :: IO ()
 gameLoop = do

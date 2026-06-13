@@ -1,8 +1,8 @@
-module DumbBot (
+module Bots.DumbBot (
     playDumb
 ) where
 
-import Play
+import Utils.Play
 import Utils.Random (getRandom)
 
 playDumb :: PlayType -> IO PlayType

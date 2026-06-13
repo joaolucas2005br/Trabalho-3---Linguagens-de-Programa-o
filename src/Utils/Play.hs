@@ -1,7 +1,8 @@
-module Play (
+module Utils.Play (
     PlayType(..),
     beats,
-    numberToPlay
+    numberToPlay,
+    validPlay
 ) where
 
 data PlayType = Rock | Paper | Scissor | Water | Fire
@@ -23,4 +24,7 @@ numberToPlay 3 = Scissor
 numberToPlay 4 = Water
 numberToPlay 5 = Fire
 numberToPlay _ = error "Jogada invalida"
+
+validPlay :: Int -> Bool
+validPlay playChoice = playChoice >= 1 && playChoice <= 5
  

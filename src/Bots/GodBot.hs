@@ -1,8 +1,8 @@
-module GodBot (
+module Bots.GodBot (
     playGod
 ) where
 
-import Play
+import Utils.Play
 import Utils.Random (getRandom)
 
 playGod :: PlayType -> IO PlayType
